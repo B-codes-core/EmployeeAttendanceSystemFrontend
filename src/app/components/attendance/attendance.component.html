@@ -1,0 +1,21 @@
+<div>
+    <label>Name: <input [(ngModel)]="name" /></label><br />
+    <label>Employee ID: <input [(ngModel)]="empId" /></label><br />
+    <label>Department:
+      <select [(ngModel)]="department">
+        <option value="">Select</option>
+        <option>IT</option>
+        <option>HR</option>
+        <option>Finance</option>
+      </select>
+    </label><br />
+  
+    <button (click)="checkIn()" [disabled]="checkInTime">Check In</button>
+    <button (click)="checkOut()" [disabled]="!checkInTime || checkOutTime">Check Out</button>
+  
+   <div *ngIf="checkInTime" class="check-in-out-info">
+  Checked in at: {{ checkInTime }}
+</div>
+<div *ngIf="checkOutTime" class="check-in-out-info">
+  Checked out at: {{ checkOutTime }}
+</div>

@@ -1,0 +1,36 @@
+<!-- src/app/components/report/report.component.html -->
+<div class="report-container">
+    <h2>Attendance Report</h2>
+
+    <!-- Table to display attendance records -->
+    <table *ngIf="data.length > 0" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Employee ID</th>
+                <th>Department</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of data">
+                <td>{{ d.name }}</td>
+                <td>{{ d.empId }}</td>
+                <td>{{ d.department }}</td>
+                <td>{{ d.checkIn }}</td>
+                <td>{{ d.checkOut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- If there are no records, show this message -->
+    <div *ngIf="data.length === 0">
+        <p>No records found. Please check in and out first.</p>
+    </div>
+
+    <!-- Button to export the data to Excel -->
+    <div *ngIf="data.length > 0" class="export-button">
+        <button (click)="exportToExcel()">Export to Excel</button>
+    </div>
+</div>

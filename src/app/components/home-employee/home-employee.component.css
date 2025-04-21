@@ -1,0 +1,26 @@
+.button-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.button-group button {
+    background-color: #4CAF50;
+    /* Material green */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.button-group button:hover {
+    background-color: #45A049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

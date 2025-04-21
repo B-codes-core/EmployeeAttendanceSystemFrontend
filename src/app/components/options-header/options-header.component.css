@@ -1,0 +1,56 @@
+@keyframes fadeSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.options-header {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    background: linear-gradient(to right, #3f51b5, #2196f3);
+    /* Blue gradient */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeSlideDown 0.6s ease-out;
+}
+
+.option-button {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+    background: #ffb300;
+    /* Vivid amber/golden */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.option-button mat-icon {
+    font-size: 18px;
+}
+
+.option-button:hover {
+    background: #ffc107;
+    /* Brighter golden on hover */
+    transform: scale(1.05);
+}
+
+.employee {
+    border: 2px solid #ffe082;
+    /* Soft highlight */
+}
+
+.manager {
+    border: 2px solid #ffd54f;
+}
