@@ -18,11 +18,11 @@
                 <th>Check-Out</th>
             </tr>
             <tr *ngFor="let entry of history">
-                <td>{{ entry.name }}</td>
-                <td>{{ entry.empId }}</td>
+                <td>{{ entry.employee_name }}</td>
+                <td>{{ entry.employee_id }}</td>
                 <td>{{ entry.department }}</td>
-                <td>{{ entry.checkIn }}</td>
-                <td>{{ entry.checkOut }}</td>
+                <td>{{ entry.check_in_time }}</td>
+                <td>{{ entry.check_out_time }}</td>
             </tr>
         </table>
 

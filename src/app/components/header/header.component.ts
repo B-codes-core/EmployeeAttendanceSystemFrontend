@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private timerInterval: any;
 
   ngOnInit(): void {
-    this.updateTime(); // initialize immediately
+    this.updateTime(); 
     this.timerInterval = setInterval(() => this.updateTime(), 1000);
   }
 

@@ -3,6 +3,7 @@ import { CheckInService } from '../../services/checkin.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Attendance } from '../../models/employee.model';
 
 @Component({
   selector: 'app-attendance-history',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./attendance-history.component.css']
 })
 export class AttendanceHistoryComponent implements OnInit {
-  history: any[] = [];
+  history: Attendance[] = [];
   isLoading: boolean = true;
   hasCheckedIn: boolean = false;
 

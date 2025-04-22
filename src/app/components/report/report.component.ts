@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as XLSX from 'xlsx';
 import { AttendanceReportService } from '../../services/report.service';
 import { FormsModule } from '@angular/forms';
+import { Attendance } from '../../models/employee.model';
 
 @Component({
   selector: 'app-report',
@@ -11,9 +12,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
-export class ReportComponent {
-  data: any[] = [];
-  filteredData: any[] = [];
+export class ReportComponent implements OnInit {
+  data: Attendance[] = [];
+  filteredData: Attendance[] = [];
 
   // Search fields
   searchName: string = '';
@@ -23,7 +24,22 @@ export class ReportComponent {
 
   constructor(private reportService: AttendanceReportService) {}
 
+  // Load all records on component init
+  ngOnInit() {
+    this.reportService.getAllReports().subscribe((response: any[]) => {
+      this.data = response;
+      this.filteredData = response; // Initialize filteredData to all records
+    }, error => {
+      console.error('Error loading reports:', error);
+    });
+  }
+
   filterRecords() {
+    if (!this.searchName && !this.searchDept && !this.startDate && !this.endDate) {
+      this.filteredData = this.data;
+      return;
+    }
+
     this.reportService.getFilteredReports(
       this.searchName,
       this.searchDept,

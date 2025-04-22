@@ -25,4 +25,8 @@ export class AttendanceReportService {
 
     return this.http.get<any[]>(this.apiUrl, { params });
   }
+
+  getAllReports():Observable<any[]> {
+    return this.http.get<any[]>("http://localhost:5000/api/attendance");
+  }
 }
