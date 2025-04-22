@@ -22,7 +22,7 @@
 }
 
 .option-button {
-    color: #fff;
+    color: #fff !important;
     font-weight: 600;
     font-size: 0.85rem;
     padding: 0.6rem 1.2rem;
@@ -41,16 +41,7 @@
 }
 
 .option-button:hover {
-    background: #ffc107;
+    background: #ebb71a;
     /* Brighter golden on hover */
     transform: scale(1.05);
-}
-
-.employee {
-    border: 2px solid #ffe082;
-    /* Soft highlight */
-}
-
-.manager {
-    border: 2px solid #ffd54f;
 }

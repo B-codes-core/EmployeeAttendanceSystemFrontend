@@ -1,11 +1,16 @@
 <div class="options-header">
-    <button mat-button class="option-button employee">
+    <button mat-button class="option-button" (click)="goToEmployeeAttendance()">
         <mat-icon>person</mat-icon>
-        Employee
+        Employee: Fill Attendance
     </button>
 
-    <button mat-button class="option-button manager">
-        <mat-icon>supervisor_account</mat-icon>
-        Manager
+    <button mat-button class="option-button" (click)="goToEmployeeAttendanceHistory()">
+        <mat-icon>person</mat-icon>
+        Employee: Attendance History
+    </button>
+
+    <button mat-button class="option-button" (click)="goToManager()">
+        <mat-icon>person</mat-icon>
+        Manager: View Reports
     </button>
 </div>

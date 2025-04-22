@@ -1,36 +1,44 @@
-<!-- src/app/components/report/report.component.html -->
-<div class="report-container">
-    <h2>Attendance Report</h2>
-
-    <!-- Table to display attendance records -->
-    <table *ngIf="data.length > 0" border="1">
+  <div class="report-container">
+      <h2>Attendance Report</h2>
+    
+      <!-- Filter section -->
+      <div class="filters">
+        <input type="text" [(ngModel)]="searchName" (input)="filterRecords()" placeholder="Search by name" />
+        <input type="text" [(ngModel)]="searchDept" (input)="filterRecords()" placeholder="Search by department" />
+        <input type="date" [(ngModel)]="startDate" (change)="filterRecords()" />
+        <input type="date" [(ngModel)]="endDate" (change)="filterRecords()" />
+      </div>
+    
+      <!-- Attendance table -->
+      <table *ngIf="filteredData.length > 0" border="1">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Employee ID</th>
-                <th>Department</th>
-                <th>Check-In</th>
-                <th>Check-Out</th>
-            </tr>
+          <tr>
+            <th>Name</th>
+            <th>Employee ID</th>
+            <th>Department</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let d of data">
-                <td>{{ d.name }}</td>
-                <td>{{ d.empId }}</td>
-                <td>{{ d.department }}</td>
-                <td>{{ d.checkIn }}</td>
-                <td>{{ d.checkOut }}</td>
-            </tr>
+          <tr *ngFor="let d of filteredData">
+            <td>{{ d.name }}</td>
+            <td>{{ d.empId }}</td>
+            <td>{{ d.department }}</td>
+            <td>{{ d.checkIn }}</td>
+            <td>{{ d.checkOut }}</td>
+          </tr>
         </tbody>
-    </table>
-
-    <!-- If there are no records, show this message -->
-    <div *ngIf="data.length === 0">
-        <p>No records found. Please check in and out first.</p>
-    </div>
-
-    <!-- Button to export the data to Excel -->
-    <div *ngIf="data.length > 0" class="export-button">
+      </table>
+    
+      <!-- No records message -->
+      <div *ngIf="filteredData.length === 0">
+        <p>No records match your criteria.</p>
+      </div>
+    
+      <!-- Export button -->
+      <div *ngIf="filteredData.length > 0" class="export-button">
         <button (click)="exportToExcel()">Export to Excel</button>
+      </div>
     </div>
-</div>
+    

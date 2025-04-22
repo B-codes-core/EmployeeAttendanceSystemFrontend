@@ -1,21 +1,33 @@
-<table *ngIf="history.length > 0" border="1">
-    <tr>
-        <th>Name</th>
-        <th>Employee ID</th>
-        <th>Department</th>
-        <th>Check-In</th>
-        <th>Check-Out</th>
-    </tr>
-    <tr *ngFor="let entry of history">
-        <td>{{ entry.name }}</td>
-        <td>{{ entry.empId }}</td>
-        <td>{{ entry.department }}</td>
-        <td>{{ entry.checkIn }}</td>
-        <td>{{ entry.checkOut }}</td>
-    </tr>
-</table>
+<div *ngIf="isLoading" class="loading">
+    Loading attendance history...
+</div>
 
-<!-- Show message when no history available -->
-<div *ngIf="history.length === 0">
-    <p>No attendance records available. Please fill in your attendance first.</p>
+<div *ngIf="!isLoading">
+    <div *ngIf="!hasCheckedIn" class="no-check-in">
+        <p>You need to check in first before viewing your attendance history.</p>
+        <button class="checkin-btn" (click)="goToCheckIn()">Go to Check In</button>
+    </div>
+
+    <div *ngIf="hasCheckedIn">
+        <table *ngIf="history.length > 0" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Employee ID</th>
+                <th>Department</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+            </tr>
+            <tr *ngFor="let entry of history">
+                <td>{{ entry.name }}</td>
+                <td>{{ entry.empId }}</td>
+                <td>{{ entry.department }}</td>
+                <td>{{ entry.checkIn }}</td>
+                <td>{{ entry.checkOut }}</td>
+            </tr>
+        </table>
+
+        <div *ngIf="history.length === 0" class="no-records">
+            <p>No attendance records available for your employee ID.</p>
+        </div>
+    </div>
 </div>
